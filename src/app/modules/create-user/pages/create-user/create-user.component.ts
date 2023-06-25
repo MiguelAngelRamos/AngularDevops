@@ -38,9 +38,10 @@ export class CreateUserComponent implements OnDestroy{
 
  createUser() {
   if(this.forma.valid) {
-    this.createUserService.createUser(this.forma.value as IStudent).subscribe();
-    this.router.navigateByUrl('/users');
-    this.forma.reset();
+    this.createUserService.createUser(this.forma.value as IStudent).subscribe( response => {
+      this.router.navigateByUrl('/users');
+      this.forma.reset();
+    });
     return;
   }
 
